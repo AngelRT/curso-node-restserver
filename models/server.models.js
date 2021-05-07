@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { dbConecction } = require('../database/config');
 
 class Server {
 
@@ -8,12 +9,19 @@ class Server {
         this.port = process.env.PORT;
         this.usuariosPath = '/api/usuarios';
 
+        //Conectar a la BD
+        this.conectarDB();
+
         //Middlewares 
         // cors = permite proteger nuestro servidor de una manera superficial
         this.middlewares();
 
         //Rutas de la aplicacion
         this.routes();
+    }
+
+    async conectarDB() {
+        await dbConecction();
     }
 
     /* Cuando se crea un middleware y publicamos la ruta publica esta tomara la ruta "/" (principal la del index) 
