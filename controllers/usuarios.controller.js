@@ -84,6 +84,7 @@ const usuariosPost = async(req, res = response) => {
 
 const usuariosDelete = async(req, res) => {
 
+
     const { id } = req.params;
 
     //fisicamente lo borramos
